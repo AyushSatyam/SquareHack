@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "343270514608",
+    "firebase_url": "https://squarehackclassapp.firebaseio.com",
+    "project_id": "squarehackclassapp",
+    "storage_bucket": "squarehackclassapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343270514608:android:9be2b33f19b09e37c54075",
+        "android_client_info": {
+          "package_name": "com.example.squarehack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "343270514608-91bio66p1p9t161aq85gerbp5350dv4l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.squarehack",
+            "certificate_hash": "a9fd8bc7698871dc85d54d75eb5c602d86bc1362"
+          }
+        },
+        {
+          "client_id": "343270514608-c6gvtoum1u8qlci35iu4d76ughcdld00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDi0VoBOs39bQmNCrkZJLYW3Gabr95rqRw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "343270514608-c6gvtoum1u8qlci35iu4d76ughcdld00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
