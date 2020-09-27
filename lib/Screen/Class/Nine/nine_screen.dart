@@ -3,7 +3,7 @@ import 'package:squarehack/Screen/Class/Nine/components/chapture_doubt.dart';
 import 'package:squarehack/Screen/Class/Nine/components/chapture_exam.dart';
 import 'package:squarehack/Screen/Class/Nine/components/chapture_resource.dart';
 import 'package:squarehack/Screen/Class/Nine/components/chapture_video.dart';
-import 'package:squarehack/Screen/Class/Nine/components/nine_body.dart';
+// import 'package:squarehack/Screen/Class/Nine/components/nine_body.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:squarehack/constants.dart';
 import 'package:squarehack/drawer.dart';

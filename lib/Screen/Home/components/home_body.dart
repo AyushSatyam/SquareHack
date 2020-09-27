@@ -14,8 +14,8 @@ import 'package:squarehack/constants.dart';
 // import 'package:squarehack/root.dart';
 
 class HomeBody extends StatefulWidget {
-  final String id;
-  HomeBody(this.id);
+  // final String id;
+  // HomeBody(this.id);
 
   @override
   _HomeBodyState createState() => _HomeBodyState();

@@ -61,7 +61,7 @@ class _RootPageState extends State<RootPage> {
           backgroundColor: Colors.blue,
           // timeInSecForAndroid: 1
         );
-        return new HomeScreen(id);
+        return new HomeScreen(currentUserId: null,);
         break;
     }
     // return new WelcomeScreen();

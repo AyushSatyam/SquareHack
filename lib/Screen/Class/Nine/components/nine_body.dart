@@ -6,7 +6,7 @@ import 'package:squarehack/Screen/Class/Nine/components/nine_background.dart';
 import 'package:squarehack/Screen/Home/home_screen.dart';
 import 'package:squarehack/components/rounded_button.dart';
 import 'package:squarehack/constants.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+// import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class NineBody extends StatelessWidget {
   final String id;
@@ -77,7 +77,7 @@ class NineBody extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return HomeScreen(id);
+                      return HomeScreen(currentUserId: null,);
                     },
                   ),
                 );

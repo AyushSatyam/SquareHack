@@ -54,7 +54,7 @@ class _LoginBodyState extends State<LoginBody> {
       String userId =
           await widget.auth.signInWithEmailAndPassword(_email, _password);
       print('Signed In: $userId');
-      Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (_) => HomeScreen(userId)), (_) => false);
+      Navigator.pushAndRemoveUntil<void>(context, MaterialPageRoute(builder: (_) => HomeScreen(currentUserId: userId,)), (_) => false);
     } catch (e) {
       print('Error: $e');
     }

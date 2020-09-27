@@ -46,6 +46,11 @@ dependencies:
   jitsi_meet: ^0.4.1
   firebase_storage:
   image_picker:
+  shared_preferences:
+  cached_network_image:
+  intl:
+  flutter_local_notifications:
+  photo_view:
 
 dev_dependencies:
   flutter_test:

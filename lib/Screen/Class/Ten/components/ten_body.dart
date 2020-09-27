@@ -22,7 +22,7 @@ class TenBody extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return HomeScreen(id);
+                    return HomeScreen(currentUserId: null,);
                   },
                 ),
               );
