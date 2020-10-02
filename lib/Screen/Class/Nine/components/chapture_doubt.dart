@@ -1,16 +1,28 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:squarehack/Screen/Class/Nine/components/chatting_page.dart';
+import 'package:squarehack/Screen/Class/Nine/components/user.dart';
 import 'package:squarehack/auth.dart';
+import 'package:squarehack/components/rounded_button.dart';
 
 class ChaptureDoubt extends StatefulWidget {
+  final String currentUserId;
+
+  ChaptureDoubt({Key key, @required this.currentUserId}) : super(key: key);
   @override
-  _ChaptureDoubtState createState() => _ChaptureDoubtState();
+  _ChaptureDoubtState createState() =>
+      _ChaptureDoubtState(currentUserId: currentUserId);
 }
 
 class _ChaptureDoubtState extends State<ChaptureDoubt> {
+  final String currentUserId;
   TextEditingController searchTextEditingController = TextEditingController();
   Future<QuerySnapshot> futureSearchResult;
+
+  _ChaptureDoubtState({Key key, @required this.currentUserId});
 
   void emptyTextFormField() {
     searchTextEditingController.clear();
@@ -66,7 +78,10 @@ class _ChaptureDoubtState extends State<ChaptureDoubt> {
             futureSearchResult == null
                 ? displayNoUserFoundScreen()
                 : displayUserFoundScreen(),
-            Text("This is doubt section"),
+            // RoundedButton(
+            //   text: Text("Chatting Page"),
+            //   press: ChatScreen(),
+            // )
           ],
         ),
       ),
@@ -101,11 +116,78 @@ class _ChaptureDoubtState extends State<ChaptureDoubt> {
   }
 
   displayUserFoundScreen() {
-    return FutureBuilder(builder: (context, dataSnapshot) {
-      if (!dataSnapshot.hasData) {
-        return CircularProgressIndicator();
-      }
-      // List<UserResult> searchUserResult = [];
-    },);
+    return FutureBuilder(
+      future: futureSearchResult,
+      builder: (context, dataSnapshot) {
+        if (!dataSnapshot.hasData) {
+          return CircularProgressIndicator();
+        }
+        List<UserResult> searchUserResult = [];
+        dataSnapshot.data.documents.forEach((document) {
+          User eachUser = User.fromDocument(document);
+          UserResult userResult = UserResult(eachUser);
+          if (currentUserId != document["id"]) {
+            searchUserResult.add(userResult);
+          }
+        });
+        return ListView(
+          children: searchUserResult,
+          shrinkWrap: true,
+        );
+      },
+    );
+  }
+}
+
+class UserResult extends StatelessWidget {
+  final User eachUser;
+  UserResult(this.eachUser);
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.all(4),
+        child: Container(
+          color: Colors.blue,
+          child: Column(
+            children: <Widget>[
+              GestureDetector(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    backgroundColor: Colors.black,
+                    // backgroundImage: CachedNetworkImageProvider(eachUser.)
+                  ),
+                  title: Text(
+                    eachUser.name,
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  subtitle: Text(
+                    "Joined: " +
+                        DateFormat("dd MMMM, yyyy - hh:mm:ss").format(
+                            DateTime.fromMillisecondsSinceEpoch(
+                                int.parse(eachUser.createdAt))),
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 14,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ),
+                onTap: (){Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    ChattingPage(recieverId: eachUser.id, recieverName: eachUser.name,)));},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

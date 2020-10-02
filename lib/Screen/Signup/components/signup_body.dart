@@ -69,9 +69,12 @@ class _SignupBodyState extends State<SignupBody> {
     });
     preferences = await SharedPreferences.getInstance();
     isLoggedIn = await googleSignIn.isSignedIn();
-    if(isLoggedIn){
-      Navigator.push(context,
-      MaterialPageRoute(builder: (context) => HomeScreen(currentUserId: preferences.get("id"))));
+    if (isLoggedIn) {
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+                  HomeScreen(currentUserId: preferences.get("id"))));
     }
   }
 
@@ -135,6 +138,11 @@ class _SignupBodyState extends State<SignupBody> {
           ),
         );
         // AuthStatus.signedIn;
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    HomeScreen(currentUserId: preferences.get("id"))));
       });
     } else {
       setState(() {
@@ -142,7 +150,7 @@ class _SignupBodyState extends State<SignupBody> {
         Scaffold.of(context).showSnackBar(
           SnackBar(
             content: Text("Try again! Signin failed"),
-            backgroundColor: Colors.greenAccent,
+            backgroundColor: Colors.redAccent,
           ),
         );
         // authStatus = AuthStatus.notSignedIn;
