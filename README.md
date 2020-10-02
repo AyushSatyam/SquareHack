@@ -1,6 +1,6 @@
-# squarehack
+# SquareHack
+#### A teaching platform
 
-A new Flutter project.
 
 ## Getting Started
 
